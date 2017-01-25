@@ -51,6 +51,7 @@ atlassian*
 /lib
 
 /pub
+/logs/*
 /logs
 /setup
 
