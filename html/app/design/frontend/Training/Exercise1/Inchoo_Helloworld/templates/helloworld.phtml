@@ -25,24 +25,99 @@
     </div>
 </div>
 
+<h2> 2. Alert widget </h2>
+<div class="alert-element">
+    <a id="alert-element">
+        This is an alert widget
+    </a>
+</div>
+
+<h2> 3. Calendar widget </h2>
+<!--<div class="field overview required" data-role="filter-form" id="date_range">-->
+<!--     <span class="field-row">-->
+<!--         <label for="date_from">-->
+<!--             <span>--><?php //echo __('From') ?><!--:</span>-->
+<!--         </label>-->
+<!--         <input class="input-text required-entry"-->
+<!--                type="text"-->
+<!--                id="date_from"-->
+<!--                name="from"-->
+<!--         />-->
+<!--           <span id="date_from_advice"></span>-->
+<!--       </span>-->
+<!---->
+<!--       <span class="field-row">-->
+<!--             <label for="date_to">-->
+<!--                 <span>--><?php //echo __('To') ?><!--:</span>-->
+<!--             </label>-->
+<!--             <input class="input-text required-entry"-->
+<!--                    type="text"-->
+<!--                    id="date_to"-->
+<!--                    name="report_to"-->
+<!--             />-->
+<!--             <span id="date_to_advice"></span>-->
+<!--        </span>-->
+<!--</div>-->
+
+<input type="text" class="input-text required-entry" id="calendar_inputField" name="calendar_inputField" aria-required="true" >
 
 <script>
     require([
         'jquery',
-        'accordion'
+        'accordion',
+        'Magento_Ui/js/modal/alert',
+        "mage/calendar"
+
     ],
         function($){
         'use strict';
 
-            // ------------- Accordion widget --------------
+
             $( document ).ready(function() {
+
+
+                // ------------- Accordion widget --------------
                 $( "#narrow-by-list" ).accordion({
                     "openedState": "active",
                     "collapsible": true,
                     "active": [1,4], /** Integrat Dynamic open tab  */
                     "multipleCollapsible": true
                 });
+                //  -------------------------------------------
+
+                //-------- Alert widget ------------------------
+                $('#alert-element').alert({
+                    title: 'Some title',
+                    content: 'Some content',
+                    actions: {
+                        always: function(){}
+                    }
+                });
+                //----------------------------------------------
+
+
+
+
             });
-            //  -------------------------------------------
+
+            //                ------------ Calendar widget ------------------
+//            $("#date_range").dateRange({
+//                buttonText:"<?php //echo __('Select Date') ?>//",
+//                from:{
+//                    id:"date_from"
+//                },
+//                to:{
+//                    id:"date_to"
+//                }
+//            });
+
+            $("#calendar_inputField").calendar({
+                buttonText:"<?php echo __('Select Date') ?>",
+            });
+
+//                -----------------------------------------------
+
+
+
     });
 </script>
