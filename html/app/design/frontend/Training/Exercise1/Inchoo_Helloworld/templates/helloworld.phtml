@@ -1,0 +1,48 @@
+<h1><?php echo $this->getHelloWorldTxt(); ?></h1>
+
+<h1>Magento jQuery widgets</h1>
+
+<h2> 1. Accordion widget </h2>
+
+
+<h4>Example of magento stackexchange </h4>
+<div class="block filter" id="layered-filter-block">
+    <div class="block-content filter-content">
+        <div class="filter-options" id="narrow-by-list" data-role="content" data-mage-init='{"accordion":{"openedState": "active", "collapsible": true, "active": true, "multipleCollapsible": true}}'>
+            <div data-role="collapsible" class="filter-options-item" >
+                <div data-role="title" class="filter-options-title">Title 1</div>
+                <div data-role="content" class="filter-options-content">content 1</div>
+            </div>
+            <div data-role="collapsible" class="filter-options-item" >
+                <div data-role="title" class="filter-options-title">Title 2</div>
+                <div data-role="content" class="filter-options-content">content 2</div>
+            </div>
+            <div data-role="collapsible" class="filter-options-item" >
+                <div data-role="title" class="filter-options-title">Title 3</div>
+                <div data-role="content" class="filter-options-content">content 3</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    require([
+        'jquery',
+        'accordion'
+    ],
+        function($){
+        'use strict';
+
+            // ------------- Accordion widget --------------
+            $( document ).ready(function() {
+                $( "#narrow-by-list" ).accordion({
+                    "openedState": "active",
+                    "collapsible": true,
+                    "active": [1,4], /** Integrat Dynamic open tab  */
+                    "multipleCollapsible": true
+                });
+            });
+            //  -------------------------------------------
+    });
+</script>
