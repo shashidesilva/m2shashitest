@@ -4,7 +4,6 @@
 
 <h2> 1. Accordion widget </h2>
 
-
 <h4>Example of magento stackexchange </h4>
 <div class="block filter" id="layered-filter-block">
     <div class="block-content filter-content">
@@ -25,6 +24,24 @@
     </div>
 </div>
 
+<script>
+    require([
+            'jquery',
+            'accordion'
+        ],
+        function($){
+            'use strict';
+            $( document ).ready(function() {
+                $( "#narrow-by-list" ).accordion({
+                    "openedState": "active",
+                    "collapsible": true,
+                    "active": [1,4], /** Integrat Dynamic open tab  */
+                    "multipleCollapsible": true
+                });
+            });
+        });
+</script>
+
 <h2> 2. Alert widget </h2>
 <div class="alert-element">
     <a id="alert-element">
@@ -33,91 +50,60 @@
 </div>
 
 <h2> 3. Calendar widget </h2>
-<!--<div class="field overview required" data-role="filter-form" id="date_range">-->
-<!--     <span class="field-row">-->
-<!--         <label for="date_from">-->
-<!--             <span>--><?php //echo __('From') ?><!--:</span>-->
-<!--         </label>-->
-<!--         <input class="input-text required-entry"-->
-<!--                type="text"-->
-<!--                id="date_from"-->
-<!--                name="from"-->
-<!--         />-->
-<!--           <span id="date_from_advice"></span>-->
-<!--       </span>-->
-<!---->
-<!--       <span class="field-row">-->
-<!--             <label for="date_to">-->
-<!--                 <span>--><?php //echo __('To') ?><!--:</span>-->
-<!--             </label>-->
-<!--             <input class="input-text required-entry"-->
-<!--                    type="text"-->
-<!--                    id="date_to"-->
-<!--                    name="report_to"-->
-<!--             />-->
-<!--             <span id="date_to_advice"></span>-->
-<!--        </span>-->
-<!--</div>-->
+<h4>Example 01</h4>
+<div class="field overview required" data-role="filter-form" id="date_range">
+     <span class="field-row">
+         <label for="date_from">
+             <span><?php echo __('From') ?>:</span>
+         </label>
+         <input class="input-text required-entry"
+                type="text"
+                id="date_from"
+                name="from"
+         />
+           <span id="date_from_advice"></span>
+       </span>
 
-<input type="text" class="input-text required-entry" id="calendar_inputField" name="calendar_inputField" aria-required="true" >
+       <span class="field-row">
+             <label for="date_to">
+                 <span><?php echo __('To') ?>:</span>
+             </label>
+             <input class="input-text required-entry"
+                    type="text"
+                    id="date_to"
+                    name="report_to"
+             />
+             <span id="date_to_advice"></span>
+        </span>
+    <script>
+        require([
+            "jquery",
+            "mage/calendar"
+        ], function($){
+            $("#date_range").dateRange({
+                buttonText:"<?php echo __('Select Date') ?>",
+                from:{
+                    id:"date_from"
+                },
+                to:{
+                    id:"date_to"
+                }
+            });
+        });
+    </script>
+</div>
+<!----------------------------------------------------------------------------------------------->
+<h4>Example 02</h4>
+<input type="text" class="input-text required-entry" id="txtcalendar" name="txtcalendar" aria-required="true" >
 
 <script>
     require([
-        'jquery',
-        'accordion',
-        'Magento_Ui/js/modal/alert',
+        "jquery",
         "mage/calendar"
-
-    ],
-        function($){
-        'use strict';
-
-
-            $( document ).ready(function() {
-
-
-                // ------------- Accordion widget --------------
-                $( "#narrow-by-list" ).accordion({
-                    "openedState": "active",
-                    "collapsible": true,
-                    "active": [1,4], /** Integrat Dynamic open tab  */
-                    "multipleCollapsible": true
-                });
-                //  -------------------------------------------
-
-                //-------- Alert widget ------------------------
-                $('#alert-element').alert({
-                    title: 'Some title',
-                    content: 'Some content',
-                    actions: {
-                        always: function(){}
-                    }
-                });
-                //----------------------------------------------
-
-
-
-
-            });
-
-            //                ------------ Calendar widget ------------------
-//            $("#date_range").dateRange({
-//                buttonText:"<?php //echo __('Select Date') ?>//",
-//                from:{
-//                    id:"date_from"
-//                },
-//                to:{
-//                    id:"date_to"
-//                }
-//            });
-
-            $("#calendar_inputField").calendar({
-                buttonText:"<?php echo __('Select Date') ?>",
-            });
-
-//                -----------------------------------------------
-
-
-
+    ], function($){
+        $("#txtcalendar").calendar({
+            buttonText:"<?php echo __('Select Date') ?>",
+        });
     });
 </script>
+<!----------------------------------------------------------------------------------------------->
