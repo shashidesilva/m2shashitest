@@ -48,6 +48,23 @@
         This is an alert widget
     </a>
 </div>
+<script>
+    require([
+        'jquery',
+        'Magento_Ui/js/modal/alert'
+    ], function($,alert) { // Variable that represents the `alert` function
+
+        $("#alert-element").click(function(){
+            alert({
+                title: 'Some title',
+                content: 'Some content',
+                actions: {
+                    always: function(){}
+                }
+            });
+        });
+    });
+</script>
 
 <h2> 3. Calendar widget </h2>
 <h4>Example 01</h4>
@@ -106,4 +123,46 @@
         });
     });
 </script>
+<!----------------------------------------------------------------------------------------------->
+
+<h2> 4. Collapsible widget </h2>
+
+<p id="collap-element">collapsible</p>
+<p></p>
+<script>
+    require([
+        "jquery",
+        "mage/collapsible"
+    ], function($){
+        $("#collap-element").collapsible();
+    });
+</script>
+<!----------------------------------------------------------------------------------------------->
+
+<h2>5. Confirmation widget </h2>
+<div class="confirm-element">
+    <a id="confirm-element">
+        This is an confirm widget
+    </a>
+</div>
+<script>
+    require([
+        'jquery',
+        'Magento_Ui/js/modal/confirm'
+    ], function($,confirmation) {
+
+        $('#confirm-element').click(function(){
+            confirmation({
+                title: 'Some title',
+                content: 'Some content',
+                actions: {
+                    confirm: function(){},
+                    cancel: function(){},
+                    always: function(){}
+                }
+            });
+        });
+    });
+</script>
+
 <!----------------------------------------------------------------------------------------------->
