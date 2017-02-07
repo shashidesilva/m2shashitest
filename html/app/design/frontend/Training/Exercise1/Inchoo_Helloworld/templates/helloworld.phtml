@@ -258,3 +258,36 @@
 </script>
 
 <!----------------------------------------------------------------------------------------------->
+
+<h2>12. Navigation Widget</h2>
+
+<!----------------------------------------------------------------------------------------------->
+<h2>13. Prompt Widget</h2>
+<div class="prompt-element">
+    <a id="prompt-element">
+        This is a prompt widget
+    </a>
+</div>
+
+<script>
+    require([
+        'jquery',
+        'Magento_Ui/js/modal/prompt'
+    ],
+        function($,prompt) {
+            $('#prompt-element').click(function() {
+                prompt({
+                    title: 'Prompt Title',
+                    content: 'Content ..',
+                    actions: {
+                        confirm: function(){},
+                        cancel : function(){},
+                        always: function(){}
+                    }
+                });
+            });
+
+    });
+</script>
+
+<!----------------------------------------------------------------------------------------------->
