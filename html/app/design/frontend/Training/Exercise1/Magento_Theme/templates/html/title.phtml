@@ -25,49 +25,6 @@ if (trim($block->getPageHeading())) {
         <?php endif; ?>>
         <?php /* @escapeNotVerified */ echo $title ?>
     </h1>
-
-<!--    // ---------------------- Modal widget-->
-    <h3>On click modal widget</h3>
-    <div>
-        <a href="" id="click-this">Click this</a>
-    </div>
-    <div id="popup-modal" style="display: none;">
-        <h2> hello .... </h2>
-    </div>
-<!--    // ------------------------------------->
-
     <?php echo $block->getChildHtml(); ?>
 </div>
 <?php endif; ?>
-
-<script>
-    require(
-        [
-            'jquery',
-            'Magento_Ui/js/modal/modal',
-            'accordion'
-        ],
-        function(
-            $,
-            modal
-        ) {
-            var options = {
-                type: 'popup',
-                responsive: true,
-                innerScroll: true,
-                title: 'popup modal title',
-                buttons: [{
-                    text: $.mage.__('Continue'),
-                    class: '',
-                    click: function () {
-                        this.closeModal();
-                    }
-                }]
-            };
-
-            var popup = modal(options, $('#popup-modal'));
-            $("#click-this").on('click',function(){
-                $("#popup-modal").modal("openModal");
-            });
-        });
-</script>

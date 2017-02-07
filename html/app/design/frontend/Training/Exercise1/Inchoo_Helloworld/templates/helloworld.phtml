@@ -188,3 +188,73 @@
 
 </script>
 <!----------------------------------------------------------------------------------------------->
+
+<h2>7. Gallery Widget</h2>
+
+<h2>8. List Widget</h2>
+
+<h2>9. Magnifier Widget</h2>
+
+<!----------------------------------------------------------------------------------------------->
+<h2>10. Loader Widget</h2>
+
+<div data-role="pannel" data-mage-init='{"loader":{}}'>
+    <span id="loader-span">content</span>
+</div>
+<script>
+    require([
+        'jquery',
+        'mage/loader'
+    ], function($) {
+
+        $('#loader-span').click(function(){
+            $('[data-role="pannel"]').trigger('show.loader');
+        });
+    });
+</script>
+<!----------------------------------------------------------------------------------------------->
+
+<h2>11. Menu Widget</h2>
+
+<!----------------------------------------------------------------------------------------------->
+<h2>12. Modal Widget</h2>
+<h4>On click modal widget</h4>
+<div>
+    <a href="" id="click-this">Click this</a>
+</div>
+<div id="popup-modal" style="display: none;">
+    <h2> hello .... </h2>
+</div>
+
+<script>
+    require(
+        [
+            'jquery',
+            'Magento_Ui/js/modal/modal'
+        ],
+        function(
+            $,
+            modal
+        ) {
+            var options = {
+                type: 'popup',
+                responsive: true,
+                innerScroll: true,
+                title: 'popup modal title',
+                buttons: [{
+                    text: 'Continue',
+                    class: '',
+                    click: function () {
+                        this.closeModal();
+                    }
+                }]
+            };
+
+            var popup = modal(options, $('#popup-modal'));
+            $("#click-this").on('click',function(){
+                $("#popup-modal").modal("openModal");
+            });
+        });
+</script>
+
+<!----------------------------------------------------------------------------------------------->
