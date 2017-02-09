@@ -291,3 +291,27 @@
 </script>
 
 <!----------------------------------------------------------------------------------------------->
+
+<h2>14. Tabs widget</h2>
+<div id="tabs-1">
+    <ul>
+        <li data-role="title">
+            test title
+        </li>
+        <li data-role="content">
+            content
+        </li>
+
+    </ul>
+</div>
+<script>
+    require([
+        'jquery',
+        'mage/tabs'
+    ],functions($){
+        $('tabs-1').click(function(){
+            $('#tabs-1').tabs();
+        });
+
+    });
+</script>
