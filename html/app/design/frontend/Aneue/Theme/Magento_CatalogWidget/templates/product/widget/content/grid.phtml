@@ -39,10 +39,10 @@
         <div class="block-content">
             <?php /* @escapeNotVerified */ echo '<!-- ' . $image . '-->' ?>
             <div class="products-<?php /* @escapeNotVerified */ echo $mode; ?> <?php /* @escapeNotVerified */ echo $mode; ?>">
-                <ol class="product-items <?php /* @escapeNotVerified */ echo $type; ?>">
+                <div class="product-items <?php /* @escapeNotVerified */ echo $type; ?> owl-carousel" id="home-product-slider">
                     <?php $iterator = 1; ?>
                     <?php foreach ($items as $_item): ?>
-                        <?php /* @escapeNotVerified */ echo($iterator++ == 1) ? '<li class="product-item">' : '</li><li class="product-item">' ?>
+                        <?php /* @escapeNotVerified */ echo($iterator++ == 1) ? '<div class="product-item">' : '</div><div class="product-item">' ?>
                         <div class="product-item-info">
                             <a href="<?php /* @escapeNotVerified */ echo $block->getProductUrl($_item) ?>" class="product-item-photo">
                                 <?php echo $block->getImage($_item, $image)->toHtml(); ?>
@@ -118,11 +118,46 @@
                                 <?php endif; ?>
                             </div>
                         </div>
-                        <?php echo($iterator == count($items)+1) ? '</li>' : '' ?>
+                        <?php echo($iterator == count($items)+1) ? '</div>' : '' ?>
                     <?php endforeach ?>
-                </ol>
+                </div>
             </div>
             <?php echo $block->getPagerHtml() ?>
         </div>
     </div>
+
+    <script>
+        require([
+            'jquery',
+            'mage/mage',
+            'owlcarousel'
+        ], function ($) {
+            'use strict';
+
+            $("#home-product-slider").owlCarousel({
+//                autoplay: true,
+                nav: true,
+                dots: true,
+                responsive:{
+                    0:{
+                        items:1
+                    },
+                    550:{
+                        items:2
+                    },
+                    767:{
+                        items:3
+                    },
+                    999:{
+                        items:4
+                    },
+                    1799:{
+                        items:4
+                    }
+                }
+            });
+        });
+    </script>
+
+
 <?php endif;?>
